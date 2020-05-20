@@ -1,5 +1,5 @@
 /**
-* Template Name: Selecao - v2.1.0
+* Template Name: National Institute of Agriculture - v2.1.0
 * Template URL: https://bootstrapmade.com/selecao-bootstrap-template/
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
@@ -68,6 +68,7 @@ h1, h2, h3, h4, h5, h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
+  padding-top: 40px;
   height: 70px;
   transition: all 0.5s;
   z-index: 997;

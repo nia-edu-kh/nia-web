@@ -1,5 +1,5 @@
 /**
-* Template Name: Selecao - v2.1.0
+* Template Name: National Institute of Agriculture - v2.1.0
 * Template URL: https://bootstrapmade.com/selecao-bootstrap-template/
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
