@@ -175,5 +175,8 @@
     once: true,
     mirror: false
   });
-
+$(function(){
+  $('.kh').hide();
+  $('.en').show();
+  })
 })(jQuery);
