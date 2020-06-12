@@ -17,6 +17,7 @@
     "aos": "^2.3.4",
     "bootstrap": "^4.4.1",
     "boxicons": "^2.0.5",
+    "gulp": "^4.0.2",
     "isotope-layout": "^3.0.6",
     "jquery": "^3.4.1",
     "jquery.easing": "^1.4.1",
@@ -28,7 +29,6 @@
   "devDependencies": {
     "browser-sync": "^2.26.7",
     "del": "^5.1.0",
-    "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-beautify": "^3.0.0",
     "gulp-inject-string": "^1.1.2",
