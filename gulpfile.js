@@ -120,7 +120,7 @@ function initBrowserSync(done) {
       baseDir: distDir
     },
     port: 3000,
-    notify: false
+    notify: true
   });
   done();
 }
