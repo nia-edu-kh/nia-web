@@ -119,7 +119,11 @@ function initBrowserSync(done) {
     server: {
       baseDir: distDir
     },
-    port: 3000,
+    logLevel: "debug",
+    port: 3010,
+    localOnly: false,
+    open: 'external',
+    ui: { host: '0.0.0.0', port:3019 },
     notify: true
   });
   done();
