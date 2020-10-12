@@ -115,15 +115,19 @@ function copyDependencies() {
 
 // Init live server browser sync
 function initBrowserSync(done) {
+    console.log(process.env.GITPOD_WORKSPACE_ID)
+  var uiHost='3003-'+ process.env.GITPOD_WORKSPACE_ID + ".ws-us02.gitpod.io";
   browserSync.init({
     server: {
       baseDir: distDir
     },
     logLevel: "debug",
-    port: 3010,
+    port: 3000,
     localOnly: false,
-    open: 'external',
-    ui: { host: '0.0.0.0', port:3019 },
+    open: 'external-ui',
+    host: uiHost,
+    ui: {  host: uiHost, UI_HOST: uiHost, 'ui-host':uiHost },
+    'ui-external': uiHost,
     notify: true
   });
   done();
