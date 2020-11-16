@@ -8,6 +8,7 @@
   "license": "https://bootstrapmade.com/license/",
   "main": "gulpfile.js",
   "scripts": {
+    "new-section": "./new-section.sh",
     "start": "node_modules/.bin/gulp start",
     "watch": "node_modules/.bin/gulp watch",
     "dist": "node_modules/.bin/gulp"
