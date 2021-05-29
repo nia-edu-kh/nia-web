@@ -1,4 +1,8 @@
 # Clean up the dist folder before running any task
+ 
+gulpInsert = require 'gulp-insert'
+coffee = require 'gulp-coffee'
+examine = require './examine.coffee'
 
 clean = ->
   del distDir + '**/*'
@@ -14,6 +18,56 @@ copyFiles = ->
   mergeStream assetsFolder, formsFolder
 
 # Task: Compile HTML
+
+pfs = (stream) ->
+  new Promise((resolve, reject) ->
+    stream.on 'finish', resolve
+    stream.on 'end', resolve
+    # unsure if should use finish or end
+    stream.on 'error', reject
+    return
+    )
+
+compileHalvalla = (cb)->
+  console.log "in Halvalla"
+  console.log "Generating halvalla based html"
+  a=pfs(
+    gulp.src("./src/halvalla/**/*.coffee")
+      #.pipe gulpInsert.prepend "require './src/nia-web.coffee'"
+      .pipe gulpInsert.append """
+        debugger
+        unless renderer?
+          return JSON.stringify {db:false,html:''}
+        t= (T.render (new renderer db).html)
+        value= { db: db, html:t }
+        return JSON.stringify(value)
+        """
+      .pipe coffee()
+      .pipe examine()
+      .pipe gulp.dest distDir
+  )
+  b=()->
+    console.log "starting Mystories"
+    myStories = allDB.filter site: site
+    allStories = allDB
+
+    return pfs(gulp.src('./mystories.json', allowEmpty:true)
+      .pipe gulpInsert.append "myStories=#{JSON.stringify myStories}"
+      .pipe rename 'mystories.json'
+      .pipe gulp.dest distDir
+      )
+  c=()->
+    console.log "starting allstories"
+    allStories = allDB
+
+    return pfs(gulp.src('./allstories.json', allowEmpty:true)
+      .pipe gulpInsert.append "allStories=#{JSON.stringify allStories.toJSON()}"
+      .pipe rename 'allstories.json'
+      .pipe gulp.dest distDir
+      )
+  a.then( b).then(c).then ()->
+   console.log "DONE HTML and stories"
+   cb() if cb
 
 compileHTML = ->
   css_links = ''
@@ -107,7 +161,7 @@ credits = [
   '* License: ' + pkg.license
 ]
 # Export tasks
-dist = gulp.series(clean, gulp.parallel(copyFiles, compileHTML, compileSCSS, compileJS, copyDependencies))
+dist = gulp.series(clean, gulp.parallel(copyFiles, compileHTML, compileSCSS, compileJS, compileHalvalla, copyDependencies))
 exports.watch = gulp.series(dist, watchFiles)
 exports.start = gulp.series(dist, gulp.parallel(watchFiles, initBrowserSync))
 exports.default = dist

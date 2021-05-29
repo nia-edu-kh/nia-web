@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  {% block meta %}{% endblock %}
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+  
+  {% include('parts/header.html') %}
+
+  {% block content %}{% endblock %}
+{% set page="home" %}
+
+{% block meta %}
+  <title>The National Institute of Agriculture, Prek Leap, Phnom Penh, Cambodia</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+{% endblock %}
+
+
+  {% include "parts/hero.html" %}
+
+  <main id="main">
+
+    {% include "parts/about-section.html" %}
+    {% include "parts/happening-carousel.html" %}
+    {% include "parts/features-section.html" %}
+                       
+    {#
+    {% include "parts/blog-section.html" %}
+    {% include "parts/cta-section.html" %}
+
+    {% include "parts/services-section.html" %}
+
+    {% include "parts/portfolio-section.html" %}
+
+    {% include "parts/testimonials-section.html" %}
+
+    {% include "parts/pricing-section.html" %}
+
+    {% include "parts/faq-section.html" %}
+
+    {% include "parts/team-section.html" %}
+    {% include "parts/contact-section.html" %}
+    #}
+
+  </main><!-- End #main -->
+
+
+  {% include "parts/footer.html" %}
+
+  <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+
+  <!-- Vendor JS Files -->
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>
+
